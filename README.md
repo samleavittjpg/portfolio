@@ -1,16 +1,51 @@
-# React + Vite
+# Portfolio (Vite + Express API)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Frontend (this folder root)
 
-Currently, two official plugins are available:
+```bash
+npm install
+npm run dev
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Vite dev server proxies `/api` and `/uploads` to `http://127.0.0.1:4000` (see `vite.config.js`).
 
-## React Compiler
+## Backend API (`server/`)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Express + MongoDB (Mongoose). Serves REST routes and stores uploaded files under `server/uploads/` (created at runtime; not committed).
 
-## Expanding the ESLint configuration
+```bash
+cd server
+npm install
+copy .env.example .env   # Windows — then edit .env
+# Set MONGODB_URI (local or Atlas), SESSION_SECRET, AUTH_USERNAME, AUTH_PASSWORD
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Or production-style:
+
+```bash
+cd server
+npm run build
+npm start
+```
+
+### Environment (`server/.env`)
+
+| Variable         | Purpose                                      |
+| ---------------- | -------------------------------------------- |
+| `MONGODB_URI`    | e.g. Atlas `mongodb+srv://.../portfolio?...` |
+| `PORT`           | Default `4000`                               |
+| `SESSION_SECRET` | Random string for cookies                    |
+| `AUTH_USERNAME`  | Dashboard login                              |
+| `AUTH_PASSWORD`  | Dashboard login                              |
+
+Never commit `server/.env`. Copy from `server/.env.example` on each machine.
+
+## New machine checklist
+
+1. Clone repo, `npm install` in repo root and in `server/`.
+2. Create `server/.env` from `.env.example` with your Atlas URI and secrets.
+3. Run API: `cd server && npm run dev`.
+4. Run site: from root `npm run dev`.
+
+Uploaded media lives in `server/uploads/` locally; sync between machines via your normal workflow or re-upload through the app.
