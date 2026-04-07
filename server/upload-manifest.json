@@ -1,0 +1,112 @@
+[
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\DMA_portfolio_review\\Attempt_1_png.png",
+    "relative": "..\\..\\server\\uploads\\DMA_portfolio_review\\Attempt_1_png.png",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551899/portfolio/Attempt_1_png_oq3orf.png"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\DMA_portfolio_review\\Attempt_2_png.png",
+    "relative": "..\\..\\server\\uploads\\DMA_portfolio_review\\Attempt_2_png.png",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551901/portfolio/Attempt_2_png_ffwwzb.png"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\DMA_portfolio_review\\Attempt_3_png.png",
+    "relative": "..\\..\\server\\uploads\\DMA_portfolio_review\\Attempt_3_png.png",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551903/portfolio/Attempt_3_png_cezf1i.png"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\DMA_portfolio_review\\Design-4.png",
+    "relative": "..\\..\\server\\uploads\\DMA_portfolio_review\\Design-4.png",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551904/portfolio/Design-4_t9awmf.png"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\DMA_portfolio_review\\Fight_Club_png.png",
+    "relative": "..\\..\\server\\uploads\\DMA_portfolio_review\\Fight_Club_png.png",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551906/portfolio/Fight_Club_png_mw0cov.png"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\DMA_portfolio_review\\Fleming_Mixamo.mp4",
+    "relative": "..\\..\\server\\uploads\\DMA_portfolio_review\\Fleming_Mixamo.mp4",
+    "url": "https://res.cloudinary.com/dixom6gnj/video/upload/v1775551907/portfolio/Fleming_Mixamo_ik2vkk.mp4"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\DMA_portfolio_review\\Girl_2_png.png",
+    "relative": "..\\..\\server\\uploads\\DMA_portfolio_review\\Girl_2_png.png",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551909/portfolio/Girl_2_png_oltpbt.png"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\DMA_portfolio_review\\Magneto_png.png",
+    "relative": "..\\..\\server\\uploads\\DMA_portfolio_review\\Magneto_png.png",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551910/portfolio/Magneto_png_bihoat.png"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\DMA_portfolio_review\\MassFX_Drawbridge.mp4",
+    "relative": "..\\..\\server\\uploads\\DMA_portfolio_review\\MassFX_Drawbridge.mp4",
+    "url": "https://res.cloudinary.com/dixom6gnj/video/upload/v1775551911/portfolio/MassFX_Drawbridge_sspinw.mp4"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\DMA_portfolio_review\\Sticker Showcase1-1.png",
+    "relative": "..\\..\\server\\uploads\\DMA_portfolio_review\\Sticker Showcase1-1.png",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551918/portfolio/Sticker_Showcase1-1_bxhkgy.png"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\photography\\Leavitt_Assignment_1_-6651-2.jpg",
+    "relative": "..\\..\\server\\uploads\\photography\\Leavitt_Assignment_1_-6651-2.jpg",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551920/portfolio/Leavitt_Assignment_1_-6651-2_ljcdho.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\photography\\Leavitt_Assignment_1_-6681-2.jpg",
+    "relative": "..\\..\\server\\uploads\\photography\\Leavitt_Assignment_1_-6681-2.jpg",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551921/portfolio/Leavitt_Assignment_1_-6681-2_gvt9tm.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\photography\\Leavitt_Assignment_1_-6842_Frame.jpg",
+    "relative": "..\\..\\server\\uploads\\photography\\Leavitt_Assignment_1_-6842_Frame.jpg",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551923/portfolio/Leavitt_Assignment_1_-6842_Frame_nsidrb.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\photography\\Leavitt_Assignment_1_-6930_Line.jpg",
+    "relative": "..\\..\\server\\uploads\\photography\\Leavitt_Assignment_1_-6930_Line.jpg",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551925/portfolio/Leavitt_Assignment_1_-6930_Line_aqjtju.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\photography\\Leavitt_Assignment_1_-6960_Light.jpg",
+    "relative": "..\\..\\server\\uploads\\photography\\Leavitt_Assignment_1_-6960_Light.jpg",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551927/portfolio/Leavitt_Assignment_1_-6960_Light_vc6du7.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\photography\\Leavitt_Assignment_1_-6979_Contrast.jpg",
+    "relative": "..\\..\\server\\uploads\\photography\\Leavitt_Assignment_1_-6979_Contrast.jpg",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551929/portfolio/Leavitt_Assignment_1_-6979_Contrast_ml0m35.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\photography\\Leavitt_Assignment_2_-7455.jpg",
+    "relative": "..\\..\\server\\uploads\\photography\\Leavitt_Assignment_2_-7455.jpg",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551931/portfolio/Leavitt_Assignment_2_-7455_jkp6ur.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\photography\\Leavitt_Assignment_2_-7507.jpg",
+    "relative": "..\\..\\server\\uploads\\photography\\Leavitt_Assignment_2_-7507.jpg",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551933/portfolio/Leavitt_Assignment_2_-7507_abeykt.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\photography\\Leavitt_Assignment_2_-7561.jpg",
+    "relative": "..\\..\\server\\uploads\\photography\\Leavitt_Assignment_2_-7561.jpg",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551934/portfolio/Leavitt_Assignment_2_-7561_vrhhyr.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\photography\\Leavitt_Assignment_2_-7737.jpg",
+    "relative": "..\\..\\server\\uploads\\photography\\Leavitt_Assignment_2_-7737.jpg",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551935/portfolio/Leavitt_Assignment_2_-7737_k9xcb1.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\photography\\Leavitt_Excercise_1_-6292.jpg",
+    "relative": "..\\..\\server\\uploads\\photography\\Leavitt_Excercise_1_-6292.jpg",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551937/portfolio/Leavitt_Excercise_1_-6292_lvkaso.jpg"
+  },
+  {
+    "localPath": "C:\\Users\\magic\\Desktop\\School\\Digital Media Art\\REACT_portfolio\\server\\uploads\\photography\\Leavitt_Excercise_1_6098.jpg",
+    "relative": "..\\..\\server\\uploads\\photography\\Leavitt_Excercise_1_6098.jpg",
+    "url": "https://res.cloudinary.com/dixom6gnj/image/upload/v1775551938/portfolio/Leavitt_Excercise_1_6098_egfuxz.jpg"
+  }
+]

@@ -6,18 +6,21 @@ const ARTIST_NAME = 'Sam Leavitt'
 const ARTIST_STATEMENT = (
   <>
     <p>
-      I work across photography, digital media, and personal practice—treating
-      the portfolio as both archive and experiment. Pieces here span coursework,
-      independent projects, and ongoing curiosity.
+      Hey, I'm Sam. I'm a DMA student at San Jose State University. I've worked in 
+      many different areas, including game development, design, 
+      film, and fine art. I've always been drawn to the social aspect of art and design,
+      how the artist tries to create an experience for the viewer, whether that be one 
+      that challenges, soothes, or simply intrigues them.
     </p>
     <p>
-      I am drawn to material that sits between clarity and ambiguity: images
-      that ask for a second look, motion that refuses a single reading, and tools
-      that feel honest about their limits.
+      I am drawn to combined, multivariate material use. Over the course of my painting
+      practice, I began to incorporate different paints and other materials into each piece,
+      I apply the same concept to my digital work, seeking to include multiple layers
+      of tools and functions in each project.
     </p>
     <p>
-      This site is a living document. New work replaces placeholders as the
-      semester and studio practice evolve.
+      This site is a living document. New work replaces old, the purifying fire of
+      practice and refinement gives way to ever-improving work.
     </p>
   </>
 )
