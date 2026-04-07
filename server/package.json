@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@types/express-session": "^1.18.2",
+    "cloudinary": "^2.7.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
