@@ -48,25 +48,8 @@ npm start
 | `SESSION_SECRET` | Random string for cookies                    |
 | `AUTH_USERNAME`  | Dashboard login                              |
 | `AUTH_PASSWORD`  | Dashboard login                              |
-| `CORS_ORIGINS`   | Split deploy: your Vercel URL(s), comma-separated |
 
 Never commit `server/.env`. Copy from `server/.env.example` on each machine.
-
-## Deploy: Vercel (frontend) + Render (API)
-
-1. **Render** — New **Web Service**, connect this repo, set **Root Directory** to `server`.  
-   - **Build:** `npm install && npm run build`  
-   - **Start:** `npm start`  
-   - **Env:** `MONGODB_URI`, `SESSION_SECRET`, `AUTH_*`, `NODE_ENV=production`, and  
-     `CORS_ORIGINS=https://YOUR-APP.vercel.app` (add preview URLs if you use them).  
-   - **Disk:** free tier filesystem is ephemeral; uploads may be lost on restart. Add a **persistent disk** on Render or move uploads to S3/R2 later.
-
-2. **Vercel** — Import this repo, **Root Directory** = `.` (repo root).  
-   - **Build:** `npm run build` (default `vite build`)  
-   - **Output:** `dist`  
-   - **Env:** `VITE_API_BASE_URL=https://YOUR-SERVICE.onrender.com` (no trailing slash).
-
-3. Local dev: leave `VITE_API_BASE_URL` unset so Vite proxies `/api` and `/uploads` to port 4000.
 
 ## New machine checklist
 
@@ -75,3 +58,26 @@ Never commit `server/.env`. Copy from `server/.env.example` on each machine.
 3. Run both: from repo root `npm run dev:all`, or run `cd server && npm run dev` and `npm run dev` in two terminals.
 
 Uploaded media lives in `server/uploads/` locally; sync between machines via your normal workflow or re-upload through the app.
+
+### Bulk-upload files to production (Render)
+
+The API stores files on disk and serves them at `/uploads/...`. After deploy, copy a folder of images/videos from your machine to the live API:
+
+```bash
+cd server
+node scripts/bulk-upload.mjs https://YOUR-SERVICE.onrender.com "C:\path\to\your\media\folder"
+```
+
+This calls `POST /api/upload` for each file and writes **`upload-manifest.json`** in the current directory with `{ localPath, url, filename }`. In **Atlas → projects**, set each document’s **`coverAssetPath`** to the matching `url` (e.g. `/uploads/abc-uuid.jpg`).
+
+**Render note:** free/ephemeral disks can lose files on restart; add a **persistent disk** or object storage (S3/R2) if uploads must survive long-term.
+
+## Deploy: Vercel (frontend) + Render (API)
+
+1. **Render** — Web Service, **Root Directory** `server`. Build: `npm install && npm run build`. Start: `npm start`.  
+   Env: `MONGODB_URI`, `NODE_ENV=production`, `SESSION_SECRET`, `AUTH_*`, `CORS_ORIGINS` (your Vercel URLs, comma-separated, `https://`).
+
+2. **Vercel** — Root `.`, build `npm run build`, output `dist`.  
+   Env: `VITE_API_BASE_URL=https://YOUR-SERVICE.onrender.com` (no trailing slash). Redeploy after changing it.
+
+3. **Atlas** — **Network Access** must allow your host (often `0.0.0.0/0` for PaaS like Render).
