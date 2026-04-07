@@ -25,7 +25,7 @@ const ARTIST_STATEMENT = (
   </>
 )
 
-const PHOTO_SRC = '/artist-photo.jpg'
+const PHOTO_SRC = 'https://res.cloudinary.com/dixom6gnj/image/upload/v1775551921/portfolio/Leavitt_Assignment_1_-6681-2_gvt9tm.jpg'
 
 export function AboutPage() {
   const [photoOk, setPhotoOk] = useState(true)
