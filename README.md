@@ -9,6 +9,16 @@ npm run dev
 
 Vite dev server proxies `/api` and `/uploads` to `http://127.0.0.1:4000` (see `vite.config.js`).
 
+### API + site together (recommended)
+
+From the repo root (after `npm install` here and in `server/`):
+
+```bash
+npm run dev:all
+```
+
+This runs the Express API and Vite in one terminal (`-k` stops both if one exits).
+
 ## Backend API (`server/`)
 
 Express + MongoDB (Mongoose). Serves REST routes and stores uploaded files under `server/uploads/` (created at runtime; not committed).
@@ -62,7 +72,6 @@ Never commit `server/.env`. Copy from `server/.env.example` on each machine.
 
 1. Clone repo, `npm install` in repo root and in `server/`.
 2. Create `server/.env` from `.env.example` with your Atlas URI and secrets.
-3. Run API: `cd server && npm run dev`.
-4. Run site: from root `npm run dev`.
+3. Run both: from repo root `npm run dev:all`, or run `cd server && npm run dev` and `npm run dev` in two terminals.
 
 Uploaded media lives in `server/uploads/` locally; sync between machines via your normal workflow or re-upload through the app.

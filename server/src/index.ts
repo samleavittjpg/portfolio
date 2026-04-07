@@ -20,7 +20,9 @@ if (!MONGODB_URI) {
 const uploadDir = path.resolve(process.cwd(), 'uploads');
 fs.mkdirSync(uploadDir, { recursive: true });
 
-await mongoose.connect(MONGODB_URI);
+await mongoose.connect(MONGODB_URI, {
+  serverSelectionTimeoutMS: 10_000,
+});
 
 const app = express();
 if (process.env.NODE_ENV === 'production') {
@@ -40,10 +42,18 @@ const extraCorsOrigins =
     .filter(Boolean) ?? [];
 const corsAllowed = new Set([...defaultCorsOrigins, ...extraCorsOrigins]);
 
+/** Dev: Vite may use 5174, 5175, … — allow any localhost port. Prod: only allowlist above. */
+const devLocalOrigin =
+  /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/;
+
 app.use(
   cors({
     origin(origin, cb) {
       if (!origin) {
+        cb(null, true);
+        return;
+      }
+      if (process.env.NODE_ENV !== 'production' && devLocalOrigin.test(origin)) {
         cb(null, true);
         return;
       }
