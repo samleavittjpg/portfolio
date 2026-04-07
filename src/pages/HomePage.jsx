@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom'
 import { useFromIntro } from '../context/FromIntroContext.jsx'
 import { CoverThumb } from '../components/CoverThumb.jsx'
 import { ProjectDetailModal } from '../components/ProjectDetailModal.jsx'
+import { apiUrl } from '../lib/apiBase.js'
 import {
   SECTIONS,
   isVideoPath,
@@ -383,7 +384,7 @@ export function HomePage() {
 
   useEffect(() => {
     let cancelled = false
-    fetch('/api/projects', { credentials: 'include' })
+    fetch(apiUrl('/api/projects'), { credentials: 'include' })
       .then((r) => {
         if (!r.ok) throw new Error(String(r.status))
         return r.json()

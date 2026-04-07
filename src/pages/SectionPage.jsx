@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { CoverThumb } from '../components/CoverThumb.jsx'
 import { ProjectDetailModal } from '../components/ProjectDetailModal.jsx'
+import { apiUrl } from '../lib/apiBase.js'
 import {
   dmaSubsectionForProject,
   getSectionMeta,
@@ -40,7 +41,7 @@ export function SectionPage() {
 
   useEffect(() => {
     let cancelled = false
-    fetch('/api/projects', { credentials: 'include' })
+    fetch(apiUrl('/api/projects'), { credentials: 'include' })
       .then((r) => {
         if (!r.ok) throw new Error(String(r.status))
         return r.json()

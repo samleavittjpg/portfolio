@@ -38,8 +38,25 @@ npm start
 | `SESSION_SECRET` | Random string for cookies                    |
 | `AUTH_USERNAME`  | Dashboard login                              |
 | `AUTH_PASSWORD`  | Dashboard login                              |
+| `CORS_ORIGINS`   | Split deploy: your Vercel URL(s), comma-separated |
 
 Never commit `server/.env`. Copy from `server/.env.example` on each machine.
+
+## Deploy: Vercel (frontend) + Render (API)
+
+1. **Render** — New **Web Service**, connect this repo, set **Root Directory** to `server`.  
+   - **Build:** `npm install && npm run build`  
+   - **Start:** `npm start`  
+   - **Env:** `MONGODB_URI`, `SESSION_SECRET`, `AUTH_*`, `NODE_ENV=production`, and  
+     `CORS_ORIGINS=https://YOUR-APP.vercel.app` (add preview URLs if you use them).  
+   - **Disk:** free tier filesystem is ephemeral; uploads may be lost on restart. Add a **persistent disk** on Render or move uploads to S3/R2 later.
+
+2. **Vercel** — Import this repo, **Root Directory** = `.` (repo root).  
+   - **Build:** `npm run build` (default `vite build`)  
+   - **Output:** `dist`  
+   - **Env:** `VITE_API_BASE_URL=https://YOUR-SERVICE.onrender.com` (no trailing slash).
+
+3. Local dev: leave `VITE_API_BASE_URL` unset so Vite proxies `/api` and `/uploads` to port 4000.
 
 ## New machine checklist
 

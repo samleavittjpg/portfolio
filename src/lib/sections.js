@@ -1,3 +1,5 @@
+import { API_BASE } from './apiBase.js'
+
 export const SECTIONS = [
   { key: 'dma', id: 'section-dma', title: 'DMA portfolio review' },
   { key: 'photography', id: 'section-photography', title: 'Photography' },
@@ -85,6 +87,7 @@ export function groupDmaProjectsBySubsection(projects) {
  * Paths from Mongo are often stored as `uploads/...` without a leading `/`.
  * Relative URLs then resolve against the current route (e.g. /home/uploads/…)
  * and break; the same string works when typed in the address bar from site root.
+ * Split deploy: prefix with VITE_API_BASE_URL so `/uploads` hits the Render host.
  */
 export function normalizeUploadedAssetUrl(path) {
   if (!path || typeof path !== 'string') return ''
@@ -93,8 +96,11 @@ export function normalizeUploadedAssetUrl(path) {
   if (/^https?:\/\//i.test(s) || s.startsWith('//') || s.startsWith('data:')) {
     return s
   }
-  if (s.startsWith('/')) return s
-  return `/${s.replace(/^\/+/, '')}`
+  let rel = s.startsWith('/') ? s : `/${s.replace(/^\/+/, '')}`
+  if (API_BASE && rel.startsWith('/uploads')) {
+    return `${API_BASE}${rel}`
+  }
+  return rel
 }
 
 const VIDEO_EXT = /\.(mp4|webm|ogg|mov|m4v|avi)(\?.*)?$/i

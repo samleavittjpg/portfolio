@@ -1,9 +1,11 @@
+import { apiUrl } from '../lib/apiBase.js'
+
 /**
  * @param {string} path
  * @param {RequestInit} [init]
  */
 export async function apiJson(path, init) {
-  const res = await fetch(path, {
+  const res = await fetch(apiUrl(path), {
     ...init,
     credentials: 'include',
     headers: {

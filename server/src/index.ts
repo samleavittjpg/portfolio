@@ -23,15 +23,41 @@ fs.mkdirSync(uploadDir, { recursive: true });
 await mongoose.connect(MONGODB_URI);
 
 const app = express();
+if (process.env.NODE_ENV === 'production') {
+  app.set('trust proxy', 1);
+}
+
 const SESSION_SECRET =
   process.env.SESSION_SECRET ?? 'dev-only-change-in-production';
 
+const defaultCorsOrigins = [
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+];
+const extraCorsOrigins =
+  process.env.CORS_ORIGINS?.split(',')
+    .map((s) => s.trim())
+    .filter(Boolean) ?? [];
+const corsAllowed = new Set([...defaultCorsOrigins, ...extraCorsOrigins]);
+
 app.use(
   cors({
-    origin: ['http://localhost:5173', 'http://127.0.0.1:5173'],
+    origin(origin, cb) {
+      if (!origin) {
+        cb(null, true);
+        return;
+      }
+      if (corsAllowed.has(origin)) {
+        cb(null, true);
+        return;
+      }
+      cb(null, false);
+    },
     credentials: true,
   })
 );
+
+const prod = process.env.NODE_ENV === 'production';
 app.use(
   session({
     name: 'portfolio.sid',
@@ -40,8 +66,9 @@ app.use(
     saveUninitialized: false,
     cookie: {
       httpOnly: true,
-      sameSite: 'lax',
-      secure: process.env.NODE_ENV === 'production',
+      /* Vercel → Render: cross-site credentialed fetch needs None + Secure */
+      sameSite: prod ? 'none' : 'lax',
+      secure: prod,
       maxAge: 7 * 24 * 60 * 60 * 1000,
     },
   })

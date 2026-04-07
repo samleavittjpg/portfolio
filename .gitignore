@@ -15,6 +15,9 @@ dist-ssr
 # API server: secrets and user-uploaded files
 server/.env
 server/uploads
+.env
+.env.*
+!.env.example
 
 # Editor directories and files
 .vscode/*
