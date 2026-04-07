@@ -66,15 +66,45 @@ void main() {
 }
 `
 
-export function ShaderCanvas({ className }) {
+export function ShaderCanvas({
+  className,
+  preserveDrawingBuffer = false,
+  paused = false,
+}) {
   const canvasRef = useRef(null)
+  const pausedRef = useRef(paused)
+  const pauseStartedAtRef = useRef(0)
+  const pausedTotalMsRef = useRef(0)
+  const rafRef = useRef(0)
+  const renderRef = useRef(null)
+
+  useEffect(() => {
+    pausedRef.current = paused
+    if (paused) {
+      pauseStartedAtRef.current = performance.now()
+      return
+    }
+    const startedAt = pauseStartedAtRef.current
+    if (startedAt) {
+      pausedTotalMsRef.current += performance.now() - startedAt
+      pauseStartedAtRef.current = 0
+    }
+    // restart loop if we were paused (no RAF scheduled)
+    if (!document.hidden && rafRef.current === 0 && renderRef.current) {
+      rafRef.current = requestAnimationFrame(renderRef.current)
+    }
+  }, [paused])
 
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return
 
     const gl =
-      canvas.getContext('webgl', { antialias: false, alpha: true }) ||
+      canvas.getContext('webgl', {
+        antialias: false,
+        alpha: true,
+        preserveDrawingBuffer,
+      }) ||
       canvas.getContext('experimental-webgl')
     if (!gl) return
 
@@ -107,6 +137,8 @@ export function ShaderCanvas({ className }) {
 
     let raf = 0
     const start = performance.now()
+    pausedTotalMsRef.current = 0
+    pauseStartedAtRef.current = paused ? performance.now() : 0
 
     let mouseX = -1
     let mouseY = -1
@@ -150,12 +182,18 @@ export function ShaderCanvas({ className }) {
     let running = true
     const render = () => {
       if (!running) return
-      const t = (performance.now() - start) / 1000
+      if (pausedRef.current) {
+        rafRef.current = 0
+        return
+      }
+      const t = (performance.now() - start - pausedTotalMsRef.current) / 1000
       if (iTimeLoc) gl.uniform1f(iTimeLoc, t)
       if (iMouseLoc) gl.uniform4f(iMouseLoc, mouseX, mouseY, 0, 0)
       gl.drawArrays(gl.TRIANGLES, 0, 6)
       raf = requestAnimationFrame(render)
+      rafRef.current = raf
     }
+    renderRef.current = render
 
     const onResize = () => resize()
     resize()
@@ -168,15 +206,22 @@ export function ShaderCanvas({ className }) {
         running = false
         cancelAnimationFrame(raf)
         raf = 0
+        rafRef.current = 0
       } else {
         running = true
-        if (!raf) raf = requestAnimationFrame(render)
+        if (!raf && !pausedRef.current) {
+          raf = requestAnimationFrame(render)
+          rafRef.current = raf
+        }
       }
     }
     document.addEventListener('visibilitychange', onVisibility)
 
     running = !document.hidden
-    if (running) raf = requestAnimationFrame(render)
+    if (running && !pausedRef.current) {
+      raf = requestAnimationFrame(render)
+      rafRef.current = raf
+    }
 
     return () => {
       running = false
@@ -188,10 +233,12 @@ export function ShaderCanvas({ className }) {
       canvas.removeEventListener('touchstart', onTouchMove)
       canvas.removeEventListener('touchmove', onTouchMove)
       cancelAnimationFrame(raf)
+      rafRef.current = 0
+      renderRef.current = null
       gl.deleteProgram(program)
       if (buffer) gl.deleteBuffer(buffer)
     }
-  }, [])
+  }, [preserveDrawingBuffer])
 
   return <canvas ref={canvasRef} className={className} />
 }

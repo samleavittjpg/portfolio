@@ -79,6 +79,15 @@
   overflow-x: visible;
 }
 
+.site__introFade {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  background: #000;
+  opacity: 0;
+}
+
 .site__outletAnim {
   position: relative;
   flex: 1 1 auto;
@@ -1133,6 +1142,87 @@
 
 .intro.intro--overlay .intro__shader {
   filter: brightness(0.72) contrast(1.08) saturate(0.98);
+}
+
+.intro__circleOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: #000;
+  clip-path: circle(0px at 50% 50%);
+  -webkit-clip-path: circle(0px at 50% 50%);
+  opacity: 0;
+}
+
+.intro__shaderSnapshot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Start by matching the canvas element’s filter, then add blur/darken. */
+  filter: var(--intro-snap-base-filter, none) blur(18px) brightness(0.68)
+    saturate(0.92);
+}
+
+.intro__shaderSnapshotDarken {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 10%, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.92)),
+    linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.92));
+  opacity: 0.78;
+}
+
+.intro--circleLeaving .intro__circleOverlay {
+  opacity: 1;
+  animation: introCircleReveal 900ms linear both;
+  will-change: clip-path;
+}
+
+/* Fade to black right at the end to hide the route swap. */
+.intro--circleLeaving::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: #000;
+  opacity: 0;
+  animation: introFadeToBlack 900ms linear both;
+}
+
+@keyframes introFadeToBlack {
+  0% {
+    opacity: 0;
+  }
+  78% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes introCircleReveal {
+  0% {
+    clip-path: circle(0px at 50% 50%);
+    -webkit-clip-path: circle(0px at 50% 50%);
+  }
+  62% {
+    /* Hold small longer so the expansion reads slower */
+    clip-path: circle(42vmax at 50% 50%);
+    -webkit-clip-path: circle(42vmax at 50% 50%);
+  }
+  92% {
+    clip-path: circle(340vmax at 50% 50%);
+    -webkit-clip-path: circle(340vmax at 50% 50%);
+  }
+  100% {
+    clip-path: inset(0);
+    -webkit-clip-path: inset(0);
+  }
 }
 
 .intro__click {

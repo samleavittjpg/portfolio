@@ -92,6 +92,7 @@ function ShellLayoutBody() {
   const partsDetailsRef = useRef(null)
   const outletAnimRef = useRef(null)
   const prevPathForAnimRef = useRef(location.pathname)
+  const introFadeRef = useRef(null)
 
   useLayoutEffect(() => {
     const from = prevPathForAnimRef.current
@@ -111,6 +112,36 @@ function ShellLayoutBody() {
     partsDetailsRef.current?.removeAttribute('open')
   }, [location.pathname])
 
+  // Fade in from black on the first /home paint after intro.
+  useLayoutEffect(() => {
+    const el = introFadeRef.current
+    if (!el) return
+    const fromState = location.state?.fromIntro === true
+    let fromStorage = false
+    try {
+      fromStorage = sessionStorage.getItem('portfolioFromIntro') === '1'
+    } catch {
+      // ignore
+    }
+    if (!fromState && !fromStorage) return
+
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduce) return
+
+    el.style.opacity = '1'
+    el.style.transition = 'none'
+    void el.offsetHeight
+    requestAnimationFrame(() => {
+      el.style.transition = 'opacity 260ms ease-out'
+      el.style.opacity = '0'
+    })
+    const t = window.setTimeout(() => {
+      el.style.transition = ''
+      el.style.opacity = ''
+    }, 320)
+    return () => window.clearTimeout(t)
+  }, [location.pathname, location.state])
+
   return (
     <div className="site site--shader">
       <div className="portfolioBackdrop" aria-hidden>
@@ -120,6 +151,7 @@ function ShellLayoutBody() {
       </div>
       <div className="portfolioBackdrop__veil" aria-hidden />
       <div className="site__body">
+        <div ref={introFadeRef} className="site__introFade" aria-hidden />
         <div className="top-bar">
           <nav className="top-nav" aria-label="Primary">
             <Link to="/home" className="top-nav__brand">
