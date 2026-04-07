@@ -13,16 +13,23 @@ const PORT = Number(process.env.PORT) || 4000;
 const MONGODB_URI = process.env.MONGODB_URI;
 
 if (!MONGODB_URI) {
-  console.error('Set MONGODB_URI in server/.env (see server/.env.example)');
+  console.error(
+    'Missing MONGODB_URI. Set it in Render → Environment (runtime), or server/.env locally.'
+  );
   process.exit(1);
 }
 
 const uploadDir = path.resolve(process.cwd(), 'uploads');
 fs.mkdirSync(uploadDir, { recursive: true });
 
-await mongoose.connect(MONGODB_URI, {
-  serverSelectionTimeoutMS: 10_000,
-});
+try {
+  await mongoose.connect(MONGODB_URI, {
+    serverSelectionTimeoutMS: 10_000,
+  });
+} catch (err) {
+  console.error('MongoDB connection failed:', err);
+  process.exit(1);
+}
 
 const app = express();
 if (process.env.NODE_ENV === 'production') {
