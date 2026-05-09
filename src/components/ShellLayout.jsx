@@ -8,8 +8,8 @@ import { UserManagement } from './UserManagement'
 import { SECTIONS } from '../lib/sections.js'
 
 const PARTS_MENU_LABEL = {
-  dma: 'Intro to DMA',
-  dmawork: 'DMA',
+  dmaintro: 'Intro to DMA',
+  dma: 'DMA',
   video: 'Video',
   photography: 'Photography',
   personal: 'Personal',

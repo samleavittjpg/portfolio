@@ -1,8 +1,8 @@
 import { API_BASE } from './apiBase.js'
 
 export const SECTIONS = [
-  { key: 'dma', id: 'section-dma', title: 'Intro to DMA' },
-  { key: 'dmawork', id: 'section-dmawork', title: 'DMA' },
+  { key: 'dmaintro', id: 'section-dmaintro', title: 'Intro to DMA' },
+  { key: 'dma', id: 'section-dma', title: 'DMA' },
   { key: 'video', id: 'section-video', title: 'Video' },
   { key: 'photography', id: 'section-photography', title: 'Photography' },
   { key: 'personal', id: 'section-personal', title: 'Personal Work' },
@@ -10,17 +10,25 @@ export const SECTIONS = [
 
 const SECTION_KEY_SET = new Set(SECTIONS.map((s) => s.key))
 
+/** Canonicalize stored Mongo `section` (legacy alias). */
+export function canonicalSectionKey(raw) {
+  const s = typeof raw === 'string' ? raw.trim() : ''
+  if (!s) return ''
+  if (s === 'dmawork') return 'dma'
+  return s
+}
+
 export function sectionForProject(p) {
-  const s = typeof p?.section === 'string' ? p.section.trim() : ''
+  const s = canonicalSectionKey(p?.section)
   if (s && SECTION_KEY_SET.has(s)) return s
-  return 'dma'
+  return 'dmaintro'
 }
 
 export function getSectionMeta(key) {
   return SECTIONS.find((s) => s.key === key) ?? null
 }
 
-/** Keys for /home/section/dma layout (fixed order). Illustration merges into vector. */
+/** Keys for Intro page /home/section/dmaintro (fixed order). Illustration merges into vector. */
 export const DMA_SUBSECTION_ORDER = [
   'glitch',
   'vector',

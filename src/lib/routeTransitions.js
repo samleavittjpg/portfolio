@@ -1,7 +1,7 @@
 /** Order for horizontal section-page slides (home column order left → right). */
 const SECTION_ORDER = {
-  dma: 0,
-  dmawork: 1,
+  dmaintro: 0,
+  dma: 1,
   video: 2,
   photography: 3,
   personal: 4,

@@ -17,11 +17,11 @@ const projectSchema = new mongoose.Schema(
     /** Home page column keys (matches frontend SECTIONS) */
     section: {
       type: String,
-      enum: ['dma', 'dmawork', 'video', 'photography', 'personal'],
-      default: 'dma',
+      enum: ['dmaintro', 'dma', 'video', 'photography', 'personal'],
+      default: 'dmaintro',
     },
     /**
-     * DMA portfolio subgroup. On the DMA page, `illustration` is shown with `vector`
+     * Subgroup for Intro (`dmaintro`). On `/home/section/dmaintro`, `illustration` is shown with `vector`
      * (Vector / Illustration). Tags `illustration` / `vector` match the same bucket.
      */
     dmaCategory: {

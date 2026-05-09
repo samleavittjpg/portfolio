@@ -20,7 +20,7 @@ await Project.insertMany([
     description:
       'Run `npm run seed --prefix server` only once; edit projects in MongoDB or add an admin UI later. Set youtubeUrl to a watch or youtu.be link (or the 11-char id) for an embedded player; optional coverAssetPath overrides the thumbnail.',
     tags: ['motion', 'demo'],
-    section: 'dma',
+    section: 'dmaintro',
     dmaCategory: 'video',
     sortOrder: 0,
     youtubeUrl: 'https://www.youtube.com/watch?v=LXb3EKWsInQ',

@@ -66,13 +66,14 @@ export function SectionPage() {
   }, [projects, meta])
 
   const dmaGroups = useMemo(
-    () => (meta?.key === 'dma' ? groupDmaProjectsBySubsection(list) : []),
+    () =>
+      meta?.key === 'dmaintro' ? groupDmaProjectsBySubsection(list) : [],
     [meta?.key, list]
   )
 
-  /** DMA modal prev/next stays within the same subsection bucket (see DMA_SUBSECTION_ORDER). */
+  /** Intro modal prev/next stays within the same subsection bucket (see DMA_SUBSECTION_ORDER). */
   const modalSectionProjects = useMemo(() => {
-    if (!meta || meta.key !== 'dma' || !modalProject) return list
+    if (!meta || meta.key !== 'dmaintro' || !modalProject) return list
     const sub = dmaSubsectionForProject(modalProject)
     return list.filter((p) => dmaSubsectionForProject(p) === sub)
   }, [meta, modalProject, list])
@@ -102,14 +103,14 @@ export function SectionPage() {
         {status === 'ok' && list.length === 0 && (
           <p className="muted">No items in this section yet.</p>
         )}
-        {status === 'ok' && list.length > 0 && meta.key !== 'dma' && (
+        {status === 'ok' && list.length > 0 && meta.key !== 'dmaintro' && (
           <ul className="sectionGrid">
             {list.map((p) => (
               <GridCard key={p._id} project={p} onOpen={setModalProject} />
             ))}
           </ul>
         )}
-        {status === 'ok' && list.length > 0 && meta.key === 'dma' && (
+        {status === 'ok' && list.length > 0 && meta.key === 'dmaintro' && (
           <div className="sectionPage__dmaGroups">
             {dmaGroups.map((g) => (
               <section
