@@ -404,7 +404,7 @@ export function HomePage() {
   }, [])
 
   const bySection = useMemo(() => {
-    const map = { dma: [], photography: [], personal: [] }
+    const map = Object.fromEntries(SECTIONS.map((s) => [s.key, []]))
     for (const p of projects) {
       map[sectionForProject(p)].push(p)
     }

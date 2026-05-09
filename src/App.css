@@ -840,7 +840,9 @@
   word-break: break-word;
 }
 
-.home .section--dma .home__sectionCard .card-body h3 {
+.home .section--dma .home__sectionCard .card-body h3,
+.home .section--dmawork .home__sectionCard .card-body h3,
+.home .section--video .home__sectionCard .card-body h3 {
   font-family: 'Roboto Mono', ui-monospace, 'Cascadia Code', monospace;
   font-weight: 600;
 }
@@ -856,7 +858,11 @@
 }
 
 .home .section--dma .home__sectionCard .summary,
-.home .section--dma .home__sectionCard .tags li {
+.home .section--dma .home__sectionCard .tags li,
+.home .section--dmawork .home__sectionCard .summary,
+.home .section--dmawork .home__sectionCard .tags li,
+.home .section--video .home__sectionCard .summary,
+.home .section--video .home__sectionCard .tags li {
   font-family: 'Roboto Mono', ui-monospace, 'Cascadia Code', monospace;
   font-weight: 300;
 }
@@ -939,6 +945,8 @@
 }
 
 .home .section--dma h2,
+.home .section--dmawork h2,
+.home .section--video h2,
 .home .section--photography h2,
 .home .section--personal h2 {
   font-family: 'Gasoek One', system-ui, sans-serif;
@@ -1930,7 +1938,9 @@
   word-break: break-word;
 }
 
-.sectionPage--dma .sectionGrid__label {
+.sectionPage--dma .sectionGrid__label,
+.sectionPage--dmawork .sectionGrid__label,
+.sectionPage--video .sectionGrid__label {
   font-family: 'Roboto Mono', ui-monospace, 'Cascadia Code', monospace;
   font-weight: 600;
 }

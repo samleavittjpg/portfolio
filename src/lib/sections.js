@@ -1,14 +1,18 @@
 import { API_BASE } from './apiBase.js'
 
 export const SECTIONS = [
-  { key: 'dma', id: 'section-dma', title: 'DMA portfolio review' },
+  { key: 'dma', id: 'section-dma', title: 'Intro to DMA' },
+  { key: 'dmawork', id: 'section-dmawork', title: 'DMA' },
+  { key: 'video', id: 'section-video', title: 'Video' },
   { key: 'photography', id: 'section-photography', title: 'Photography' },
   { key: 'personal', id: 'section-personal', title: 'Personal Work' },
 ]
 
+const SECTION_KEY_SET = new Set(SECTIONS.map((s) => s.key))
+
 export function sectionForProject(p) {
-  const s = p.section
-  if (s === 'photography' || s === 'personal') return s
+  const s = typeof p?.section === 'string' ? p.section.trim() : ''
+  if (s && SECTION_KEY_SET.has(s)) return s
   return 'dma'
 }
 

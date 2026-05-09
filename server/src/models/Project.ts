@@ -14,10 +14,10 @@ const projectSchema = new mongoose.Schema(
      * Thumbnail uses YouTube poster unless coverAssetPath is set; modal plays embed.
      */
     youtubeUrl: { type: String, default: '' },
-    /** Home page column: DMA review, Photography, or Personal Work */
+    /** Home page column keys (matches frontend SECTIONS) */
     section: {
       type: String,
-      enum: ['dma', 'photography', 'personal'],
+      enum: ['dma', 'dmawork', 'video', 'photography', 'personal'],
       default: 'dma',
     },
     /**

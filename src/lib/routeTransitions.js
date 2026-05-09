@@ -1,5 +1,11 @@
-/** Order for horizontal section-page slides (photography in the middle). */
-const SECTION_ORDER = { dma: 0, photography: 1, personal: 2 }
+/** Order for horizontal section-page slides (home column order left → right). */
+const SECTION_ORDER = {
+  dma: 0,
+  dmawork: 1,
+  video: 2,
+  photography: 3,
+  personal: 4,
+}
 
 function normalizePath(p) {
   if (!p || typeof p !== 'string') return ''
